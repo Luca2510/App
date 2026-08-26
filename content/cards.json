@@ -1,0 +1,268 @@
+[
+  {
+    "id": "opening_note",
+    "version": 1,
+    "prompt": "A note slides under your office door: your accountant has been skimming from the company for years. No one else has seen it yet.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Report it",
+      "deltas": { "morality": 8, "relationships": -5 },
+      "consequenceText": "You did the right thing. It cost you a friend."
+    },
+    "choiceRight": {
+      "label": "Look away",
+      "deltas": { "morality": -8, "sanity": -3 },
+      "consequenceText": "You told yourself it wasn't your problem."
+    }
+  },
+  {
+    "id": "street_beggar",
+    "version": 1,
+    "prompt": "A man outside the station asks for anything you can spare. You recognize him from last week.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Give what you have",
+      "deltas": { "wealth": -6, "morality": 5 },
+      "consequenceText": "He thanks you like you're the first person who has all month."
+    },
+    "choiceRight": {
+      "label": "Walk past",
+      "deltas": { "morality": -5, "sanity": -2 },
+      "consequenceText": "You don't look back."
+    }
+  },
+  {
+    "id": "sell_heirloom",
+    "version": 1,
+    "prompt": "Your grandmother's ring would cover next month's rent twice over. A dealer downtown is offering cash today, no questions.",
+    "category": "financial",
+    "weight": 10,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Sell it",
+      "deltas": { "wealth": 10, "relationships": -4 },
+      "setsFlags": ["sold_heirloom"],
+      "consequenceText": "Your mother notices it's gone before you've spent the money."
+    },
+    "choiceRight": {
+      "label": "Keep it",
+      "deltas": { "wealth": -4, "sanity": 3 },
+      "consequenceText": "You'll figure the rent out some other way."
+    }
+  },
+  {
+    "id": "childhood_friend_favor",
+    "version": 1,
+    "prompt": "An old friend calls, asking to borrow money you both know they won't pay back on time, if ever.",
+    "category": "relational",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Help them",
+      "deltas": { "relationships": 7, "wealth": -5 },
+      "consequenceText": "They sound relieved enough that you almost forget to worry about it."
+    },
+    "choiceRight": {
+      "label": "Turn them down",
+      "deltas": { "relationships": -7, "sanity": 2 },
+      "consequenceText": "The call ends shorter than it started."
+    }
+  },
+  {
+    "id": "anonymous_tip",
+    "version": 1,
+    "prompt": "You have information that would ruin a competitor if it reached a reporter. It would also make your quarter.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Leak it",
+      "deltas": { "morality": -6, "wealth": 8 },
+      "consequenceText": "It runs the next morning. Nobody can prove it was you."
+    },
+    "choiceRight": {
+      "label": "Stay silent",
+      "deltas": { "morality": 4, "wealth": -2 },
+      "consequenceText": "You let the quarter be what it is."
+    }
+  },
+  {
+    "id": "sleepless_ledger",
+    "version": 1,
+    "prompt": "The deadline is in six hours and the numbers still don't work. You could push through the night, again.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Push through the night",
+      "deltas": { "wealth": 6, "sanity": -8 },
+      "consequenceText": "You make it. You don't remember most of how."
+    },
+    "choiceRight": {
+      "label": "Walk away from the deadline",
+      "deltas": { "wealth": -6, "sanity": 5 },
+      "consequenceText": "You sleep. The deadline is someone else's problem now."
+    }
+  },
+  {
+    "id": "rival_offer",
+    "version": 1,
+    "prompt": "Your biggest rival offers you a way past your competitor, quietly, for a price you can't put in writing.",
+    "category": "power",
+    "weight": 6,
+    "choiceLeft": {
+      "label": "Take the deal",
+      "deltas": { "wealth": 9, "morality": -5 },
+      "setsFlags": ["made_rival_deal"],
+      "consequenceText": "You shake on it. You already know this isn't the end of it.",
+      "nextCardId": "rival_calls_in_debt"
+    },
+    "choiceRight": {
+      "label": "Refuse",
+      "deltas": { "wealth": -3, "morality": 3 },
+      "consequenceText": "You'll find another way through."
+    }
+  },
+  {
+    "id": "rival_calls_in_debt",
+    "version": 1,
+    "prompt": "Months later, your rival calls in what you owe them — and it's not money they want this time.",
+    "category": "power",
+    "weight": 10,
+    "oneShot": true,
+    "requiredFlags": ["made_rival_deal"],
+    "choiceLeft": {
+      "label": "Pay what they ask",
+      "deltas": { "relationships": -10, "wealth": -8 },
+      "setsFlags": ["rival_debt_called_in"],
+      "consequenceText": "You pay it. Someone you trusted finds out why."
+    },
+    "choiceRight": {
+      "label": "Refuse and cut ties",
+      "deltas": { "relationships": -6, "sanity": -6 },
+      "setsFlags": ["rival_debt_called_in"],
+      "consequenceText": "You refuse. You spend the next weeks waiting to see what that costs you."
+    }
+  },
+  {
+    "id": "estranged_sibling",
+    "version": 1,
+    "prompt": "Your sibling, who hasn't spoken to you in three years, texts asking if you're free this weekend.",
+    "category": "relational",
+    "weight": 10,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Reach out",
+      "deltas": { "relationships": 9, "sanity": -3 },
+      "consequenceText": "It's awkward for the first hour. Then it isn't."
+    },
+    "choiceRight": {
+      "label": "Let it go",
+      "deltas": { "relationships": -6, "sanity": 4 },
+      "consequenceText": "You leave it on read. It's easier this way, you tell yourself."
+    }
+  },
+  {
+    "id": "therapist_appointment",
+    "version": 1,
+    "prompt": "You've had a standing appointment on your calendar for two weeks. Something else has come up, again.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Go",
+      "deltas": { "sanity": 8, "wealth": -4 },
+      "consequenceText": "You almost cancelled. You're glad you didn't."
+    },
+    "choiceRight": {
+      "label": "Cancel",
+      "deltas": { "sanity": -6 },
+      "consequenceText": "There's always next week."
+    }
+  },
+  {
+    "id": "charity_gala",
+    "version": 1,
+    "prompt": "A gala invitation arrives with your name on the donor wall — if you write the check by Friday.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Donate publicly",
+      "deltas": { "wealth": -8, "relationships": 6 },
+      "consequenceText": "Your name goes up on the wall. People you haven't spoken to in years congratulate you."
+    },
+    "choiceRight": {
+      "label": "Skip it",
+      "deltas": { "wealth": 3, "relationships": -4 },
+      "consequenceText": "You keep the money and decline the invitation."
+    }
+  },
+  {
+    "id": "late_night_temptation",
+    "version": 1,
+    "prompt": "It's late, you're alone, and the thing you swore you'd stopped doing is one decision away again.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Give in",
+      "deltas": { "morality": -7, "sanity": 4 },
+      "consequenceText": "Just this once, you tell yourself. Again."
+    },
+    "choiceRight": {
+      "label": "Resist",
+      "deltas": { "morality": 6, "sanity": -5 },
+      "consequenceText": "You put the phone down. It doesn't feel like relief."
+    }
+  },
+  {
+    "id": "business_partner_secret",
+    "version": 1,
+    "prompt": "You've found proof your business partner has been lying to your biggest client for months.",
+    "category": "moral",
+    "weight": 10,
+    "minTurn": 3,
+    "choiceLeft": {
+      "label": "Expose them",
+      "deltas": { "morality": 6, "relationships": -8 },
+      "consequenceText": "The client leaves. So, eventually, does your partner."
+    },
+    "choiceRight": {
+      "label": "Cover for them",
+      "deltas": { "morality": -8, "relationships": 5 },
+      "consequenceText": "The lie gets bigger, and now it's yours too."
+    }
+  },
+  {
+    "id": "inheritance_dispute",
+    "version": 1,
+    "prompt": "Your father's will is being contested by a sibling who says you influenced him at the end.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Fight for your share",
+      "deltas": { "wealth": 8, "relationships": -6 },
+      "consequenceText": "You win. You also stop getting invited to family things."
+    },
+    "choiceRight": {
+      "label": "Walk away",
+      "deltas": { "wealth": -5, "relationships": 5 },
+      "consequenceText": "You let it go. It's not the money you wanted to keep."
+    }
+  },
+  {
+    "id": "forbidden_shortcut",
+    "version": 1,
+    "prompt": "There's a way to close the deal tonight that skips every safeguard your company has. No one would ever trace it back.",
+    "category": "power",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Take the shortcut",
+      "deltas": { "wealth": 7, "sanity": -7 },
+      "consequenceText": "The deal closes. You keep checking your inbox for weeks."
+    },
+    "choiceRight": {
+      "label": "Do it the hard way",
+      "deltas": { "wealth": -3, "sanity": 3 },
+      "consequenceText": "It takes three more weeks. You sleep fine."
+    }
+  }
+]
