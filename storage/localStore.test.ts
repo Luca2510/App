@@ -78,6 +78,19 @@ describe("localStore", () => {
     expect(store.getSettings()).toEqual({ soundOn: false, hapticsOn: true, onboardingSeen: true });
   });
 
+  it("resetAll clears the active run, history, and settings back to defaults", () => {
+    const store = createLocalStore(createMemoryStore());
+    store.setActiveRun(makeSave());
+    store.appendRunHistory(makeSummary());
+    store.setSettings({ soundOn: false });
+
+    store.resetAll();
+
+    expect(store.getActiveRun()).toBeNull();
+    expect(store.getRunHistory()).toEqual([]);
+    expect(store.getSettings()).toEqual({ soundOn: true, hapticsOn: true, onboardingSeen: false });
+  });
+
   it("round-trips the content version", () => {
     const store = createLocalStore(createMemoryStore());
     expect(store.getContentVersion()).toBeUndefined();

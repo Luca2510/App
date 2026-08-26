@@ -26,6 +26,8 @@ export interface LocalStore {
   setSettings(patch: Partial<Settings>): void;
   getContentVersion(): string | undefined;
   setContentVersion(version: string): void;
+  /** Wipes active run, run history, and settings back to defaults. Used by Settings > Reset Progress. */
+  resetAll(): void;
 }
 
 export function createLocalStore(kv: KVStore): LocalStore {
@@ -69,6 +71,11 @@ export function createLocalStore(kv: KVStore): LocalStore {
     },
     setContentVersion(version) {
       kv.set(CONTENT_VERSION_KEY, version);
+    },
+    resetAll() {
+      kv.delete(ACTIVE_RUN_KEY);
+      kv.delete(RUN_HISTORY_KEY);
+      kv.delete(SETTINGS_KEY);
     },
   };
 }

@@ -13,7 +13,6 @@
     },
     "android": {
       "package": "com.hardestdecision.app"
-    },
-    "plugins": ["react-native-reanimated"]
+    }
   }
 }

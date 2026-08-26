@@ -43,3 +43,4 @@ function loadEndings(): Ending[] {
 export const cards: DecisionCard[] = loadCards();
 export const endings: Ending[] = loadEndings();
 export const STARTING_CARD_ID = "opening_note";
+export const CONTENT_VERSION = "1";
