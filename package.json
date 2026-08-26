@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "play:debug": "ts-node --transpile-only scripts/playDebug.ts",
-    "simulate:balance": "ts-node --transpile-only scripts/simulateBalance.ts"
+    "validate:game": "ts-node --transpile-only scripts/validateGame.ts"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.18",

@@ -5,6 +5,7 @@
     "prompt": "A note slides under your office door: your accountant has been skimming from the company for years. No one else has seen it yet.",
     "category": "moral",
     "weight": 10,
+    "oneShot": true,
     "choiceLeft": {
       "label": "Report it",
       "deltas": { "morality": 8, "relationships": -5 },
@@ -342,6 +343,7 @@
     "prompt": "Your daughter wants a wedding you genuinely can't afford without draining your retirement.",
     "category": "financial",
     "weight": 10,
+    "oneShot": true,
     "choiceLeft": {
       "label": "Pay for it",
       "deltas": { "wealth": -9, "relationships": 6 },
@@ -497,6 +499,7 @@
     "prompt": "Selling your late parents' house would solve your money problems. Your siblings want to keep it in the family.",
     "category": "relational",
     "weight": 10,
+    "oneShot": true,
     "choiceLeft": {
       "label": "Sell it",
       "deltas": { "wealth": 8, "relationships": -6 },
@@ -565,6 +568,7 @@
     "prompt": "A collections agency is chasing a debt from your twenties that's long past the legal statute of limitations.",
     "category": "financial",
     "weight": 10,
+    "oneShot": true,
     "choiceLeft": {
       "label": "Pay it anyway — it feels right",
       "deltas": { "wealth": -6, "morality": 4 },
@@ -791,6 +795,7 @@
     "prompt": "As executor of your father's will, you have discretion over an ambiguous clause that could go to you or your sibling.",
     "category": "relational",
     "weight": 8,
+    "oneShot": true,
     "choiceLeft": {
       "label": "Interpret it in your own favor",
       "deltas": { "wealth": 6, "relationships": -7 },
@@ -974,7 +979,7 @@
     "requiredFlags": ["fought_cofounder"],
     "choiceLeft": {
       "label": "Buy them out",
-      "deltas": { "wealth": -15, "relationships": -4 },
+      "deltas": { "wealth": -6, "relationships": -4 },
       "setsFlags": ["built_empire_alone"],
       "consequenceText": "You own it outright now. You also built it without anyone left to share it with."
     },
