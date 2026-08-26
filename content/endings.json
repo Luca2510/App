@@ -71,5 +71,41 @@
     "description": "The deal you made to get ahead finally came due, and it took the last person still willing to stand near you.",
     "rarity": "rare",
     "requiredFlags": ["rival_debt_called_in"]
+  },
+  {
+    "id": "end_wealth_ceiling_empire",
+    "triggerStat": "wealth",
+    "triggerDirection": "ceiling",
+    "title": "Sole Proprietor",
+    "description": "You own all of it now — every share, every decision, every empty office after everyone else has gone home.",
+    "rarity": "rare",
+    "requiredFlags": ["built_empire_alone"]
+  },
+  {
+    "id": "end_sanity_floor_martyr",
+    "triggerStat": "sanity",
+    "triggerDirection": "floor",
+    "title": "What Was Left of You",
+    "description": "You gave everything to keep her safe. You're not sure there's a version of you left that exists outside of that.",
+    "rarity": "rare",
+    "requiredFlags": ["gave_up_everything_for_parent"]
+  },
+  {
+    "id": "end_relationships_floor_abandoned",
+    "triggerStat": "relationships",
+    "triggerDirection": "floor",
+    "title": "Visiting Hours",
+    "description": "You made the practical choice. The people who loved you both never quite forgave you for it, including yourself.",
+    "rarity": "rare",
+    "requiredFlags": ["placed_parent_alone"]
+  },
+  {
+    "id": "end_relationships_ceiling_custody",
+    "triggerStat": "relationships",
+    "triggerDirection": "ceiling",
+    "title": "Every Day, Whether They Want To or Not",
+    "description": "You won everything you fought for. Nobody in your house would say it feels like winning.",
+    "rarity": "rare",
+    "requiredFlags": ["won_full_custody"]
   }
 ]

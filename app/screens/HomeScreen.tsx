@@ -26,13 +26,14 @@ export function HomeScreen({ navigation }: Props) {
         </Pressable>
       </View>
 
-      <Pressable
-        style={styles.settingsLink}
-        onPress={() => navigation.navigate("Settings")}
-        accessibilityRole="button"
-      >
-        <Text style={styles.settingsLinkText}>Settings</Text>
-      </Pressable>
+      <View style={styles.footerLinks}>
+        <Pressable onPress={() => navigation.navigate("Legacy")} accessibilityRole="button">
+          <Text style={styles.settingsLinkText}>Legacy</Text>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("Settings")} accessibilityRole="button">
+          <Text style={styles.settingsLinkText}>Settings</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 }
@@ -54,6 +55,11 @@ const styles = StyleSheet.create({
     borderRadius: space(3),
   },
   playButtonText: { color: color.ground, fontSize: 16, fontWeight: "700" },
-  settingsLink: { alignSelf: "center", paddingVertical: space(6) },
+  footerLinks: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: space(8),
+    paddingVertical: space(6),
+  },
   settingsLinkText: { color: color.inkDim, fontSize: 13, letterSpacing: 0.5 },
 });

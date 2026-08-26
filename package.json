@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "test:watch": "jest --watch",
-    "play:debug": "ts-node --transpile-only scripts/playDebug.ts"
+    "play:debug": "ts-node --transpile-only scripts/playDebug.ts",
+    "simulate:balance": "ts-node --transpile-only scripts/simulateBalance.ts"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.18",
@@ -18,6 +19,7 @@
     "expo": "~52.0.0",
     "expo-asset": "~11.0.1",
     "expo-haptics": "~14.0.0",
+    "expo-sharing": "~13.0.0",
     "expo-status-bar": "~2.0.0",
     "react": "18.3.1",
     "react-native": "0.76.5",
@@ -26,6 +28,7 @@
     "react-native-reanimated": "~3.16.1",
     "react-native-safe-area-context": "4.12.0",
     "react-native-screens": "~4.4.0",
+    "react-native-view-shot": "3.8.0",
     "uuid": "^9.0.1",
     "zod": "^3.23.8",
     "zustand": "^4.5.5"

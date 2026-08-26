@@ -35,6 +35,7 @@ interface GameStoreState {
   lastConsequence: string | null;
   ending: Ending | null;
   runSummary: RunSummary | null;
+  runHistory: RunSummary[];
 
   bootstrap: () => void;
   startNewRun: () => void;
@@ -56,9 +57,11 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
   lastConsequence: null,
   ending: null,
   runSummary: null,
+  runHistory: [],
 
   bootstrap: () => {
     const settings = localStore.getSettings();
+    const runHistory = localStore.getRunHistory();
     const active = localStore.getActiveRun();
 
     if (active) {
@@ -66,6 +69,7 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
       set({
         settings,
         bootstrapped: true,
+        runHistory,
         engineState,
         currentCard: cardsById.get(engineState.currentCardId) ?? null,
         history: active.history,
@@ -75,7 +79,7 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
       return;
     }
 
-    set({ settings, bootstrapped: true });
+    set({ settings, runHistory, bootstrapped: true });
   },
 
   startNewRun: () => {
@@ -134,6 +138,7 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
         lastConsequence: choice.consequenceText,
         ending,
         runSummary: summary,
+        runHistory: localStore.getRunHistory(),
       });
       return;
     }
@@ -168,6 +173,7 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
     localStore.resetAll();
     set({
       settings: localStore.getSettings(),
+      runHistory: [],
       engineState: null,
       currentCard: null,
       history: [],

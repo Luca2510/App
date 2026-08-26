@@ -108,7 +108,7 @@
     "version": 1,
     "prompt": "Your biggest rival offers you a way past your competitor, quietly, for a price you can't put in writing.",
     "category": "power",
-    "weight": 6,
+    "weight": 3,
     "choiceLeft": {
       "label": "Take the deal",
       "deltas": { "wealth": 9, "morality": -5 },
@@ -263,6 +263,809 @@
       "label": "Do it the hard way",
       "deltas": { "wealth": -3, "sanity": 3 },
       "consequenceText": "It takes three more weeks. You sleep fine."
+    }
+  },
+  {
+    "id": "layoff_list",
+    "version": 1,
+    "prompt": "You're asked to cut 10% of your team by Friday. Your best friend's name doesn't have to be on the list — but leaving it off means someone else's is.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Leave them on the list, fair and square",
+      "deltas": { "morality": 5, "relationships": -6 },
+      "consequenceText": "You cut fair. It doesn't feel fair to say goodbye to them yourself."
+    },
+    "choiceRight": {
+      "label": "Protect your friend, cut someone else",
+      "deltas": { "morality": -6, "relationships": 3 },
+      "consequenceText": "Your friend never finds out how they stayed. You do."
+    }
+  },
+  {
+    "id": "whistleblower_email",
+    "version": 1,
+    "prompt": "You've received internal emails proving your company knew about a safety defect before it shipped.",
+    "category": "moral",
+    "weight": 8,
+    "minTurn": 4,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Send them to a journalist",
+      "deltas": { "morality": 9, "wealth": -5 },
+      "setsFlags": ["blew_whistle"],
+      "consequenceText": "The story runs. Your name isn't in it, but people start to guess."
+    },
+    "choiceRight": {
+      "label": "Delete them and stay quiet",
+      "deltas": { "morality": -9, "sanity": -4 },
+      "consequenceText": "You empty the trash folder too, just in case."
+    }
+  },
+  {
+    "id": "neighbor_noise_complaint",
+    "version": 1,
+    "prompt": "Your neighbor's late-night parties are keeping your kids up. A formal complaint could get their lease terminated.",
+    "category": "relational",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "File the complaint",
+      "deltas": { "relationships": -4, "sanity": 5 },
+      "consequenceText": "The parties stop. So does the small talk in the hallway."
+    },
+    "choiceRight": {
+      "label": "Talk to them yourself instead",
+      "deltas": { "relationships": 2, "sanity": -3 },
+      "consequenceText": "They apologize. It happens again in three weeks."
+    }
+  },
+  {
+    "id": "crypto_tip",
+    "version": 1,
+    "prompt": "A friend at a hedge fund tips you off about a merger before it's public.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Trade on it",
+      "deltas": { "wealth": 9, "morality": -6 },
+      "consequenceText": "The trade clears before the announcement. No one asks how you knew."
+    },
+    "choiceRight": {
+      "label": "Sit it out",
+      "deltas": { "wealth": -2, "morality": 4 },
+      "consequenceText": "You watch the stock move exactly like your friend said it would."
+    }
+  },
+  {
+    "id": "wedding_budget",
+    "version": 1,
+    "prompt": "Your daughter wants a wedding you genuinely can't afford without draining your retirement.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Pay for it",
+      "deltas": { "wealth": -9, "relationships": 6 },
+      "consequenceText": "She cries when you tell her. It's the good kind."
+    },
+    "choiceRight": {
+      "label": "Set a smaller budget",
+      "deltas": { "wealth": 2, "relationships": -5 },
+      "consequenceText": "She understands. She's also clearly disappointed."
+    }
+  },
+  {
+    "id": "jury_duty_verdict",
+    "version": 1,
+    "prompt": "You're the deciding juror. The evidence is thin, but you're almost certain he did it.",
+    "category": "moral",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Vote guilty on instinct",
+      "deltas": { "morality": -5, "sanity": -3 },
+      "consequenceText": "The room agrees with you fast. That bothers you more than the verdict."
+    },
+    "choiceRight": {
+      "label": "Vote not guilty on the evidence",
+      "deltas": { "morality": 5, "sanity": 2 },
+      "consequenceText": "He walks. You did what the evidence asked of you."
+    }
+  },
+  {
+    "id": "old_friend_bankruptcy",
+    "version": 1,
+    "prompt": "An old friend asks you to cosign a loan that could bankrupt you both if their business fails.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Cosign it",
+      "deltas": { "wealth": -3, "relationships": 7 },
+      "consequenceText": "They hug you like you just saved their life. Maybe you did."
+    },
+    "choiceRight": {
+      "label": "Say no",
+      "deltas": { "wealth": 2, "relationships": -7 },
+      "consequenceText": "They understand. Things are different between you after that."
+    }
+  },
+  {
+    "id": "doctor_second_opinion",
+    "version": 1,
+    "prompt": "Your doctor recommends a risky treatment. A second opinion says wait and watch, but waiting has its own risk.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Take the risky treatment now",
+      "deltas": { "sanity": -6, "wealth": -5 },
+      "consequenceText": "It's aggressive. You spend weeks finding out if it worked."
+    },
+    "choiceRight": {
+      "label": "Wait and watch",
+      "deltas": { "sanity": 4 },
+      "consequenceText": "You choose patience. You hope it was the right kind."
+    }
+  },
+  {
+    "id": "company_layoff_severance",
+    "version": 1,
+    "prompt": "You can offer laid-off employees the legal minimum severance, or dip into your own bonus to give them more.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Give up your bonus for their severance",
+      "deltas": { "wealth": -8, "morality": 8 },
+      "consequenceText": "HR is confused. The employees who left aren't."
+    },
+    "choiceRight": {
+      "label": "Keep your bonus",
+      "deltas": { "wealth": 6, "morality": -8 },
+      "consequenceText": "It's within policy. You keep telling yourself that."
+    }
+  },
+  {
+    "id": "social_media_pile_on",
+    "version": 1,
+    "prompt": "A friend is being publicly dragged online for an old, out-of-context post. Defending them will make you a target too.",
+    "category": "relational",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Defend them publicly",
+      "deltas": { "relationships": 6, "sanity": -6 },
+      "consequenceText": "Your notifications don't stop for three days."
+    },
+    "choiceRight": {
+      "label": "Stay quiet",
+      "deltas": { "relationships": -6, "sanity": 3 },
+      "consequenceText": "You message them privately instead. It's not the same thing."
+    }
+  },
+  {
+    "id": "landlord_eviction",
+    "version": 1,
+    "prompt": "A tenant hasn't paid rent in three months. They have a newborn. You need the income.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Evict them",
+      "deltas": { "wealth": 6, "morality": -7 },
+      "consequenceText": "The paperwork goes through clean. You avoid that street for a while."
+    },
+    "choiceRight": {
+      "label": "Let it slide another month",
+      "deltas": { "wealth": -6, "morality": 6 },
+      "consequenceText": "Your own bills get tighter. You tell yourself it's temporary."
+    }
+  },
+  {
+    "id": "plagiarism_discovery",
+    "version": 1,
+    "prompt": "You discover your star employee's award-winning report was mostly plagiarized.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Report it",
+      "deltas": { "morality": 7, "relationships": -4 },
+      "consequenceText": "The award gets rescinded. So does the goodwill on your team."
+    },
+    "choiceRight": {
+      "label": "Bury it — the report made the company look good",
+      "deltas": { "morality": -7, "wealth": 4 },
+      "consequenceText": "It stays on the website. You avoid looking at it directly."
+    }
+  },
+  {
+    "id": "surrogate_offer",
+    "version": 1,
+    "prompt": "A couple offers you a life-changing amount of money to be a surrogate for them.",
+    "category": "financial",
+    "weight": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Accept",
+      "deltas": { "wealth": 10, "sanity": -5 },
+      "consequenceText": "It's more money than you've ever seen. It costs what it costs."
+    },
+    "choiceRight": {
+      "label": "Decline",
+      "deltas": { "wealth": -2, "sanity": 3 },
+      "consequenceText": "They understand. You still think about the number sometimes."
+    }
+  },
+  {
+    "id": "childhood_home_sale",
+    "version": 1,
+    "prompt": "Selling your late parents' house would solve your money problems. Your siblings want to keep it in the family.",
+    "category": "relational",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Sell it",
+      "deltas": { "wealth": 8, "relationships": -6 },
+      "consequenceText": "The closing is quick. The group chat goes quiet after."
+    },
+    "choiceRight": {
+      "label": "Keep it, split the upkeep",
+      "deltas": { "wealth": -5, "relationships": 4 },
+      "consequenceText": "It costs you every month. Everyone still has somewhere to go for holidays."
+    }
+  },
+  {
+    "id": "workplace_affair_discovery",
+    "version": 1,
+    "prompt": "You find out your boss is having an affair with a subordinate on your team.",
+    "category": "relational",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Report it to HR",
+      "deltas": { "morality": 6, "relationships": -5 },
+      "consequenceText": "HR opens an investigation. Your boss knows exactly who it came from."
+    },
+    "choiceRight": {
+      "label": "Stay out of it",
+      "deltas": { "morality": -5, "sanity": -2 },
+      "consequenceText": "It's not your business, you tell yourself, watching it continue."
+    }
+  },
+  {
+    "id": "immigration_status_favor",
+    "version": 1,
+    "prompt": "A coworker asks you to falsify a document that would help their family's immigration case.",
+    "category": "moral",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Falsify it",
+      "deltas": { "morality": -6, "relationships": 7 },
+      "consequenceText": "Their family stays together. You hope no one ever checks the paperwork."
+    },
+    "choiceRight": {
+      "label": "Refuse",
+      "deltas": { "morality": 6, "relationships": -6 },
+      "consequenceText": "They understand why. It doesn't make the conversation easier."
+    }
+  },
+  {
+    "id": "startup_pivot",
+    "version": 1,
+    "prompt": "Your investors want you to pivot the company into something you find genuinely unethical, or lose funding.",
+    "category": "power",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Pivot for the funding",
+      "deltas": { "wealth": 9, "morality": -7 },
+      "consequenceText": "The round closes. The product launches. You avoid reading the reviews."
+    },
+    "choiceRight": {
+      "label": "Refuse and risk the company",
+      "deltas": { "wealth": -9, "morality": 6 },
+      "consequenceText": "The investors walk. You start looking for a smaller round."
+    }
+  },
+  {
+    "id": "old_debt_collector",
+    "version": 1,
+    "prompt": "A collections agency is chasing a debt from your twenties that's long past the legal statute of limitations.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Pay it anyway — it feels right",
+      "deltas": { "wealth": -6, "morality": 4 },
+      "consequenceText": "It's more than they were legally owed. It settles something in you, too."
+    },
+    "choiceRight": {
+      "label": "Let the statute protect you",
+      "deltas": { "wealth": 3, "morality": -2 },
+      "consequenceText": "You're within your rights. It still doesn't feel entirely clean."
+    }
+  },
+  {
+    "id": "best_man_speech_secret",
+    "version": 1,
+    "prompt": "You're giving the best man speech tomorrow. You know something about the groom that the bride doesn't.",
+    "category": "relational",
+    "weight": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Tell her before the wedding",
+      "deltas": { "morality": 6, "relationships": -8 },
+      "consequenceText": "The wedding doesn't happen. Neither of them speaks to you again."
+    },
+    "choiceRight": {
+      "label": "Say nothing — it's not your place",
+      "deltas": { "morality": -5, "relationships": 3 },
+      "consequenceText": "You give the speech. You mean less of it than anyone realizes."
+    }
+  },
+  {
+    "id": "company_data_breach",
+    "version": 1,
+    "prompt": "Your company was breached months ago. Legal says you're not required to disclose it publicly yet.",
+    "category": "moral",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Disclose it now",
+      "deltas": { "morality": 8, "wealth": -6 },
+      "consequenceText": "The stock takes a hit. Your customers find out from you, not a leak."
+    },
+    "choiceRight": {
+      "label": "Wait for legal cover",
+      "deltas": { "morality": -7, "wealth": 4 },
+      "consequenceText": "The quarter looks clean. You know what's sitting underneath it."
+    }
+  },
+  {
+    "id": "parents_disapprove_partner",
+    "version": 1,
+    "prompt": "Your parents have made it clear: it's them or your partner.",
+    "category": "relational",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Choose your partner",
+      "deltas": { "relationships": -8, "sanity": 5 },
+      "consequenceText": "Your parents don't call for a while. You don't regret it."
+    },
+    "choiceRight": {
+      "label": "End the relationship",
+      "deltas": { "relationships": 4, "sanity": -8 },
+      "consequenceText": "Dinner is peaceful again. You keep thinking about who used to sit across from you."
+    }
+  },
+  {
+    "id": "anonymous_donor_reveal",
+    "version": 1,
+    "prompt": "The charity wants to publicly name you as their biggest donor this year.",
+    "category": "relational",
+    "weight": 10,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Let them name you",
+      "deltas": { "relationships": 6, "morality": -3 },
+      "consequenceText": "People you haven't heard from in years suddenly want to catch up."
+    },
+    "choiceRight": {
+      "label": "Stay anonymous",
+      "deltas": { "morality": 5, "relationships": -2 },
+      "consequenceText": "No one knows it was you. You're surprised how much that's enough."
+    }
+  },
+  {
+    "id": "rescue_dog_bites",
+    "version": 1,
+    "prompt": "The rescue dog you adopted bit a child at the park — not seriously, but it happened.",
+    "category": "moral",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Have him put down",
+      "deltas": { "sanity": 4, "morality": -6 },
+      "consequenceText": "The vet is gentle about it. You're not, with yourself."
+    },
+    "choiceRight": {
+      "label": "Keep him, retrain him",
+      "deltas": { "sanity": -6, "morality": 5 },
+      "consequenceText": "It's months of work. You watch him around kids like a hawk now."
+    }
+  },
+  {
+    "id": "election_volunteer_lie",
+    "version": 1,
+    "prompt": "Your campaign wants you to spread a rumor about the opposing candidate that isn't quite true.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Spread it",
+      "deltas": { "morality": -7, "wealth": 5 },
+      "consequenceText": "It works better than anyone expected. You try not to think about how."
+    },
+    "choiceRight": {
+      "label": "Refuse",
+      "deltas": { "morality": 6, "wealth": -3 },
+      "consequenceText": "The campaign manager is annoyed. The polling doesn't move either way."
+    }
+  },
+  {
+    "id": "childhood_bully_apology",
+    "version": 1,
+    "prompt": "The person who bullied you in school messages you, years later, asking to talk.",
+    "category": "relational",
+    "weight": 10,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Hear them out",
+      "deltas": { "sanity": 6, "relationships": 3 },
+      "consequenceText": "It's not the conversation you imagined having for fifteen years. It's better."
+    },
+    "choiceRight": {
+      "label": "Block them",
+      "deltas": { "sanity": -3, "relationships": -1 },
+      "consequenceText": "You don't owe them closure. You still think about the message sometimes."
+    }
+  },
+  {
+    "id": "company_car_perk",
+    "version": 1,
+    "prompt": "Your expense account has almost no oversight. You could quietly pad it for years without anyone noticing.",
+    "category": "financial",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Pad it",
+      "deltas": { "wealth": 7, "morality": -6 },
+      "consequenceText": "The numbers are small enough to disappear into the noise. For now."
+    },
+    "choiceRight": {
+      "label": "Keep it honest",
+      "deltas": { "wealth": -2, "morality": 5 },
+      "consequenceText": "It costs you nothing anyone would notice, except you."
+    }
+  },
+  {
+    "id": "friends_startup_pitch",
+    "version": 1,
+    "prompt": "A close friend wants you to invest your savings in their startup. You've seen the numbers, and they're bad.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Invest anyway, for the friendship",
+      "deltas": { "wealth": -8, "relationships": 6 },
+      "consequenceText": "They're grateful. You quietly start budgeting for the loss."
+    },
+    "choiceRight": {
+      "label": "Tell them the truth and pass",
+      "deltas": { "wealth": 2, "relationships": -6 },
+      "consequenceText": "They say they understand. Something between you doesn't quite recover."
+    }
+  },
+  {
+    "id": "terminal_diagnosis_secret",
+    "version": 1,
+    "prompt": "You've been given a terminal diagnosis. Your family doesn't know yet.",
+    "category": "relational",
+    "weight": 6,
+    "minTurn": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Tell them now",
+      "deltas": { "relationships": 5, "sanity": -5 },
+      "consequenceText": "The house goes quiet in a way it's never been quiet before."
+    },
+    "choiceRight": {
+      "label": "Wait — enjoy the time you have first",
+      "deltas": { "relationships": -5, "sanity": 5 },
+      "consequenceText": "You get a few more normal weeks. You're not sure yet if that was a gift or a theft."
+    }
+  },
+  {
+    "id": "company_diversity_hire_pressure",
+    "version": 1,
+    "prompt": "Leadership pressures you to quietly pass over a qualified external candidate in favor of an internal referral.",
+    "category": "moral",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Push back and hire fairly",
+      "deltas": { "morality": 7, "relationships": -4 },
+      "consequenceText": "The external candidate gets the job. Your manager remembers this."
+    },
+    "choiceRight": {
+      "label": "Go along with it",
+      "deltas": { "morality": -6, "relationships": 3 },
+      "consequenceText": "The referral gets hired. You never quite look the other candidate up again."
+    }
+  },
+  {
+    "id": "old_car_sale_defect",
+    "version": 1,
+    "prompt": "You're selling your car privately. The buyer hasn't noticed the transmission issue you know about.",
+    "category": "financial",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Disclose it",
+      "deltas": { "wealth": -4, "morality": 6 },
+      "consequenceText": "They negotiate the price down. You still shake hands feeling fine about it."
+    },
+    "choiceRight": {
+      "label": "Say nothing",
+      "deltas": { "wealth": 5, "morality": -6 },
+      "consequenceText": "The cash clears. You block their number a week later, just in case."
+    }
+  },
+  {
+    "id": "sibling_will_executor",
+    "version": 1,
+    "prompt": "As executor of your father's will, you have discretion over an ambiguous clause that could go to you or your sibling.",
+    "category": "relational",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Interpret it in your own favor",
+      "deltas": { "wealth": 6, "relationships": -7 },
+      "consequenceText": "It's legally defensible. Your sibling doesn't see it that way."
+    },
+    "choiceRight": {
+      "label": "Interpret it in your sibling's favor",
+      "deltas": { "wealth": -6, "relationships": 5 },
+      "consequenceText": "You give up the benefit of the doubt. Your sibling never finds out you had a choice."
+    }
+  },
+  {
+    "id": "protest_arrest_risk",
+    "version": 1,
+    "prompt": "A cause you believe in is organizing a protest that will likely get participants arrested.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Join them",
+      "deltas": { "morality": 6, "wealth": -4 },
+      "consequenceText": "You spend a night in a holding cell. You'd do it again."
+    },
+    "choiceRight": {
+      "label": "Support from home instead",
+      "deltas": { "sanity": 2 },
+      "consequenceText": "You donate, you post, you stay out of the footage."
+    }
+  },
+  {
+    "id": "company_name_theft",
+    "version": 1,
+    "prompt": "A former employee is building a competitor using your exact business plan, which they had access to legally.",
+    "category": "power",
+    "weight": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Sue them into the ground",
+      "deltas": { "wealth": -6, "morality": -3 },
+      "consequenceText": "The legal fees pile up fast. So does your reputation for being someone you don't cross."
+    },
+    "choiceRight": {
+      "label": "Let them go, compete on merit",
+      "deltas": { "wealth": -2, "morality": 5 },
+      "consequenceText": "It stings watching them use your own playbook. You outbuild them anyway."
+    }
+  },
+  {
+    "id": "adoption_biological_parent",
+    "version": 1,
+    "prompt": "Your adopted teenager wants to meet their biological parent. You're terrified of what that means for your relationship.",
+    "category": "relational",
+    "weight": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Support the search",
+      "deltas": { "relationships": 5, "sanity": -6 },
+      "consequenceText": "You drive them to the meeting yourself. Your hands don't stop shaking the whole way there."
+    },
+    "choiceRight": {
+      "label": "Discourage it",
+      "deltas": { "relationships": -6, "sanity": 3 },
+      "consequenceText": "They stop asking out loud. You know it hasn't stopped."
+    }
+  },
+  {
+    "id": "inherited_secret_debt",
+    "version": 1,
+    "prompt": "You inherit your father's business, and with it, a debt he never told anyone about.",
+    "category": "financial",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Pay it off quietly",
+      "deltas": { "wealth": -9, "sanity": 3 },
+      "consequenceText": "It takes everything the business made that year. No one else ever has to know."
+    },
+    "choiceRight": {
+      "label": "Declare bankruptcy on the business",
+      "deltas": { "wealth": 4, "relationships": -5 },
+      "consequenceText": "It's the clean legal option. It's also the one with your father's name on the filing."
+    }
+  },
+  {
+    "id": "neighborhood_watch_report",
+    "version": 1,
+    "prompt": "You witness a neighbor's teenager shoplifting. The store didn't catch them.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Tell their parents",
+      "deltas": { "morality": 5, "relationships": -4 },
+      "consequenceText": "The parents are grateful, and mortified, and it's awkward at the mailbox for months."
+    },
+    "choiceRight": {
+      "label": "Say nothing",
+      "deltas": { "morality": -4, "relationships": 2 },
+      "consequenceText": "It's not really your business, you decide. You keep deciding that."
+    }
+  },
+  {
+    "id": "company_relocation",
+    "version": 1,
+    "prompt": "A promotion requires relocating your family across the country, away from aging parents and old friends.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Take it",
+      "deltas": { "wealth": 7, "relationships": -6 },
+      "consequenceText": "The new title looks good on paper. The first holiday alone doesn't."
+    },
+    "choiceRight": {
+      "label": "Turn it down",
+      "deltas": { "wealth": -5, "relationships": 5 },
+      "consequenceText": "Your manager is surprised. Your parents don't have to be, not this year."
+    }
+  },
+  {
+    "id": "found_wallet",
+    "version": 1,
+    "prompt": "You find a wallet on the street with two thousand dollars in cash and an ID.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Return it, cash and all",
+      "deltas": { "morality": 7, "wealth": -2 },
+      "consequenceText": "The owner can't believe it. Neither, a little, can you."
+    },
+    "choiceRight": {
+      "label": "Keep the cash, mail back the rest",
+      "deltas": { "morality": -6, "wealth": 5 },
+      "consequenceText": "The ID goes in an envelope. The cash doesn't."
+    }
+  },
+  {
+    "id": "hospice_care_decision",
+    "version": 1,
+    "prompt": "The doctors say your father has days left. He's asked to go home instead of staying in the hospital, against medical advice.",
+    "category": "relational",
+    "weight": 6,
+    "minTurn": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Bring him home",
+      "deltas": { "relationships": 6, "sanity": -6 },
+      "consequenceText": "It's harder than the hospital in every practical way. He asked, and you gave him that."
+    },
+    "choiceRight": {
+      "label": "Keep him in the hospital",
+      "deltas": { "relationships": -5, "sanity": 2 },
+      "consequenceText": "The care is better there. He never quite stops asking to leave."
+    }
+  },
+  {
+    "id": "cofounder_equity_grab",
+    "version": 1,
+    "prompt": "Your co-founder wants to restructure the cap table before the next funding round — quietly, in a way that leaves you with almost nothing if you don't sign this week.",
+    "category": "power",
+    "weight": 6,
+    "minTurn": 5,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Fight for equal terms",
+      "deltas": { "relationships": -6, "sanity": -3 },
+      "setsFlags": ["fought_cofounder"],
+      "consequenceText": "The negotiation gets ugly fast. You don't back down.",
+      "nextCardId": "cofounder_showdown"
+    },
+    "choiceRight": {
+      "label": "Sign it to keep the peace",
+      "deltas": { "wealth": -8, "sanity": 2 },
+      "consequenceText": "You'll figure the money out later, you tell yourself."
+    }
+  },
+  {
+    "id": "cofounder_showdown",
+    "version": 1,
+    "prompt": "Your co-founder gives an ultimatum: buy them out entirely, or they walk and take half your engineering team with them.",
+    "category": "power",
+    "weight": 10,
+    "oneShot": true,
+    "requiredFlags": ["fought_cofounder"],
+    "choiceLeft": {
+      "label": "Buy them out",
+      "deltas": { "wealth": -15, "relationships": -4 },
+      "setsFlags": ["built_empire_alone"],
+      "consequenceText": "You own it outright now. You also built it without anyone left to share it with."
+    },
+    "choiceRight": {
+      "label": "Let them walk",
+      "deltas": { "wealth": -10, "morality": 4 },
+      "consequenceText": "Half your team leaves with them. You start rebuilding, again."
+    }
+  },
+  {
+    "id": "elderly_parent_care",
+    "version": 1,
+    "prompt": "Your mother can't safely live alone anymore. Moving her in means giving up the guest room you were renting out — and a lot more than that.",
+    "category": "relational",
+    "weight": 8,
+    "minTurn": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Move her in with you",
+      "deltas": { "wealth": -4 },
+      "setsFlags": ["parent_moved_in"],
+      "consequenceText": "She's grateful, and a little ashamed to need it. You try not to let her see either.",
+      "nextCardId": "parent_breaking_point"
+    },
+    "choiceRight": {
+      "label": "Find her a care facility",
+      "deltas": { "wealth": -10, "relationships": -5 },
+      "setsFlags": ["placed_parent_facility"],
+      "consequenceText": "She calls it \"the place you sent me.\" She's not entirely wrong."
+    }
+  },
+  {
+    "id": "parent_breaking_point",
+    "version": 1,
+    "prompt": "Six months in, caring for your mother is costing you your job, your marriage, or both. Something has to give.",
+    "category": "relational",
+    "weight": 10,
+    "oneShot": true,
+    "requiredFlags": ["parent_moved_in"],
+    "choiceLeft": {
+      "label": "Give up your career to care for her full-time",
+      "deltas": { "sanity": -15, "wealth": -8 },
+      "setsFlags": ["gave_up_everything_for_parent"],
+      "consequenceText": "You disappear into it completely. You tell yourself it's temporary."
+    },
+    "choiceRight": {
+      "label": "Place her in a facility after all",
+      "deltas": { "relationships": -10, "sanity": 5 },
+      "setsFlags": ["placed_parent_alone"],
+      "consequenceText": "You visit twice a week. It's never enough, for either of you."
+    }
+  },
+  {
+    "id": "custody_battle_begins",
+    "version": 1,
+    "prompt": "Your ex is fighting for full custody. Your lawyer says you can win — if you're willing to use things against them that have nothing to do with parenting.",
+    "category": "relational",
+    "weight": 6,
+    "minTurn": 5,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Use everything you have",
+      "deltas": { "morality": -10, "relationships": 2 },
+      "setsFlags": ["fighting_dirty_custody"],
+      "consequenceText": "Your lawyer says it'll work. It doesn't feel like winning yet.",
+      "nextCardId": "custody_battle_verdict"
+    },
+    "choiceRight": {
+      "label": "Fight clean, and maybe lose",
+      "deltas": { "morality": 6, "wealth": -6 },
+      "consequenceText": "Your lawyer isn't optimistic. You sleep fine anyway."
+    }
+  },
+  {
+    "id": "custody_battle_verdict",
+    "version": 1,
+    "prompt": "You win. Full custody, exactly what you asked for. Your kids barely speak to you by the end of the hearing.",
+    "category": "relational",
+    "weight": 10,
+    "oneShot": true,
+    "requiredFlags": ["fighting_dirty_custody"],
+    "choiceLeft": {
+      "label": "Take the win",
+      "deltas": { "relationships": 12, "sanity": -6 },
+      "setsFlags": ["won_full_custody"],
+      "consequenceText": "You have them every day now. Most of those days, they'd rather not be there."
+    },
+    "choiceRight": {
+      "label": "Offer to share custody anyway",
+      "deltas": { "relationships": 4, "morality": 5 },
+      "consequenceText": "Your lawyer is furious. Your kids notice, and it matters more than the ruling did."
     }
   }
 ]

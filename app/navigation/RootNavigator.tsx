@@ -8,13 +8,17 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { GameScreen } from "../screens/GameScreen";
 import { EndingScreen } from "../screens/EndingScreen";
 import { SettingsScreen } from "../screens/SettingsScreen";
+import { LegacyScreen } from "../screens/LegacyScreen";
 
 export type RootStackParamList = {
   Splash: undefined;
   Onboarding: undefined;
   Home: undefined;
   Game: undefined;
-  Ending: undefined;
+  // historyId set when reopening a past run (read-only) from Legacy;
+  // omitted for the live end-of-run flow, which reads the store directly.
+  Ending: { historyId: string } | undefined;
+  Legacy: undefined;
   Settings: undefined;
 };
 
@@ -48,6 +52,7 @@ export function RootNavigator() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Game" component={GameScreen} />
         <Stack.Screen name="Ending" component={EndingScreen} />
+        <Stack.Screen name="Legacy" component={LegacyScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
