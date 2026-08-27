@@ -1072,5 +1072,667 @@
       "deltas": { "relationships": 4, "morality": 5 },
       "consequenceText": "Your lawyer is furious. Your kids notice, and it matters more than the ruling did."
     }
+  },
+  {
+    "id": "friend_startup_investment",
+    "version": 1,
+    "prompt": "A friend asks you to invest $5,000 into his startup. The idea sounds far-fetched, but he's convincing, and he's never asked you for anything before.",
+    "category": "financial",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Invest the $5,000",
+      "deltas": { "wealth": -5 },
+      "setsFlags": ["invested_in_startup"],
+      "consequenceText": "You wire it over. He promises you won't regret it."
+    },
+    "choiceRight": {
+      "label": "Turn him down",
+      "deltas": { "relationships": -3 },
+      "consequenceText": "He says he understands. It's a little awkward between you for a while."
+    }
+  },
+  {
+    "id": "startup_explosion",
+    "version": 1,
+    "prompt": "Your friend's startup — the one you quietly forgot you'd invested in — just landed a massive funding round. Your stake is suddenly worth a lot more than you paid, on paper.",
+    "category": "financial",
+    "weight": 10,
+    "oneShot": true,
+    "requiredFlags": ["invested_in_startup"],
+    "choiceLeft": {
+      "label": "Cash out what you can now",
+      "deltas": { "wealth": 12 },
+      "setsFlags": ["cashed_out_startup"],
+      "consequenceText": "You take the win. Your friend seems a little hurt you didn't stick around for the ride."
+    },
+    "choiceRight": {
+      "label": "Stay in — he offers you a board seat",
+      "deltas": { "relationships": 5 },
+      "setsFlags": ["stayed_in_startup"],
+      "consequenceText": "You're in it for the long haul now, for better or worse."
+    }
+  },
+  {
+    "id": "startup_fraud_accusation",
+    "version": 1,
+    "prompt": "Federal investigators are asking questions about the company you're now a board member of. Your friend swears it's a misunderstanding.",
+    "category": "power",
+    "weight": 10,
+    "oneShot": true,
+    "requiredFlags": ["stayed_in_startup"],
+    "choiceLeft": {
+      "label": "Cooperate fully with investigators",
+      "deltas": { "morality": 8, "wealth": -10 },
+      "setsFlags": ["cooperated_fraud_probe"],
+      "consequenceText": "Your stake is frozen pending the investigation. You sleep fine."
+    },
+    "choiceRight": {
+      "label": "Stand by your friend, say nothing",
+      "deltas": { "morality": -8, "relationships": 6 },
+      "setsFlags": ["shielded_friend_fraud"],
+      "consequenceText": "You back him publicly. You hope you're not wrong to."
+    }
+  },
+  {
+    "id": "casino_night_win",
+    "version": 1,
+    "prompt": "A coworker drags you to a casino for a bachelor party. By midnight, you're up eight hundred dollars.",
+    "category": "power",
+    "weight": 9,
+    "choiceLeft": {
+      "label": "Walk away now, up money",
+      "deltas": { "wealth": 6, "sanity": 2 },
+      "consequenceText": "You cash out. Best decision you make all night."
+    },
+    "choiceRight": {
+      "label": "Keep playing — the table's hot",
+      "deltas": { "wealth": -3, "sanity": -2 },
+      "setsFlags": ["gambling_temptation"],
+      "consequenceText": "You tell yourself you'll stop after the next hand."
+    }
+  },
+  {
+    "id": "gambling_spiral",
+    "version": 1,
+    "prompt": "It's been months since that casino night, and you've been finding reasons to go back. Tonight you're down more than you're willing to say out loud.",
+    "category": "power",
+    "weight": 10,
+    "oneShot": true,
+    "requiredFlags": ["gambling_temptation"],
+    "choiceLeft": {
+      "label": "Get help, tell someone",
+      "deltas": { "sanity": 8, "relationships": -4 },
+      "setsFlags": ["sought_gambling_help"],
+      "consequenceText": "Saying it out loud is the hardest part. It's also the part that works."
+    },
+    "choiceRight": {
+      "label": "One more night — you can win it back",
+      "deltas": { "wealth": -14, "sanity": -8 },
+      "setsFlags": ["gambling_spiral_deep"],
+      "consequenceText": "You don't win it back."
+    }
+  },
+  {
+    "id": "performance_review_lie",
+    "version": 1,
+    "prompt": "Your manager asks you to inflate a struggling teammate's performance review so HR doesn't flag the department this quarter.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Write the honest review",
+      "deltas": { "morality": 6, "relationships": -4 },
+      "consequenceText": "Your teammate goes on a plan. Your manager isn't happy with you either."
+    },
+    "choiceRight": {
+      "label": "Inflate it, like asked",
+      "deltas": { "morality": -6, "relationships": 3 },
+      "consequenceText": "The department's numbers look fine. Your teammate's problems don't go anywhere."
+    }
+  },
+  {
+    "id": "side_hustle_burnout",
+    "version": 1,
+    "prompt": "Your side business is finally profitable, but it's costing you every evening and weekend you have left.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Keep pushing — it's working",
+      "deltas": { "wealth": 7, "sanity": -7 },
+      "consequenceText": "The numbers keep climbing. You can't remember your last full day off."
+    },
+    "choiceRight": {
+      "label": "Scale it back",
+      "deltas": { "wealth": -4, "sanity": 6 },
+      "consequenceText": "The growth slows. You get your evenings back."
+    }
+  },
+  {
+    "id": "best_friend_wedding_conflict",
+    "version": 1,
+    "prompt": "Your best friend's wedding is the same weekend as your sister's baby shower, three states apart.",
+    "category": "relational",
+    "weight": 10,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Go to the wedding",
+      "deltas": { "relationships": 3 },
+      "setsFlags": ["missed_baby_shower"],
+      "consequenceText": "Your friend is thrilled you're there. Your sister sends one text: \"understood.\""
+    },
+    "choiceRight": {
+      "label": "Go to the baby shower",
+      "deltas": { "relationships": -5 },
+      "consequenceText": "Your sister is grateful. Your friend's group chat goes quiet around you after."
+    }
+  },
+  {
+    "id": "college_fund_raid",
+    "version": 1,
+    "prompt": "Your business needs an emergency cash injection this week or you lose it. Your kid's college fund would cover it exactly.",
+    "category": "financial",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Use the college fund",
+      "deltas": { "wealth": 9, "relationships": -6 },
+      "consequenceText": "The business survives. You'll figure out college some other way, you tell yourself."
+    },
+    "choiceRight": {
+      "label": "Let the business go instead",
+      "deltas": { "wealth": -9, "sanity": -3 },
+      "consequenceText": "You close it down. The fund stays untouched."
+    }
+  },
+  {
+    "id": "anonymous_review_revenge",
+    "version": 1,
+    "prompt": "A former employee leaves a scathing, partly false review of your business online. You know exactly who wrote it.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Respond publicly, point by point",
+      "deltas": { "morality": -3, "sanity": -4 },
+      "consequenceText": "It reads defensive no matter how you word it. A few customers notice."
+    },
+    "choiceRight": {
+      "label": "Let it go, don't respond",
+      "deltas": { "morality": 4, "sanity": -2 },
+      "consequenceText": "It stings every time you see it. You leave it alone anyway."
+    }
+  },
+  {
+    "id": "unpaid_overtime",
+    "version": 1,
+    "prompt": "Your manager keeps asking for \"just one more hour,\" every single week, with no extra pay and no end in sight.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Keep saying yes",
+      "deltas": { "wealth": 3, "sanity": -6 },
+      "consequenceText": "You're the reliable one. You're also the tired one."
+    },
+    "choiceRight": {
+      "label": "Start saying no",
+      "deltas": { "sanity": 6, "relationships": -3 },
+      "consequenceText": "Your manager is visibly annoyed the first time. It gets easier after that."
+    }
+  },
+  {
+    "id": "class_reunion_flex",
+    "version": 1,
+    "prompt": "Your class reunion is this weekend, and everyone will be quietly comparing where they ended up.",
+    "category": "relational",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Go, and be honest about how things are",
+      "deltas": { "sanity": 5, "relationships": 2 },
+      "consequenceText": "It's freeing, actually. A few people admit the same thing back."
+    },
+    "choiceRight": {
+      "label": "Skip it",
+      "deltas": { "sanity": -2, "relationships": -2 },
+      "consequenceText": "You tell yourself you were busy. You scroll the photos later anyway."
+    }
+  },
+  {
+    "id": "parents_retirement_home",
+    "version": 1,
+    "prompt": "Your parents can no longer afford their retirement community. You could cover it quietly, without telling your siblings you're doing it alone.",
+    "category": "financial",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Cover it quietly yourself",
+      "deltas": { "wealth": -8, "relationships": 4 },
+      "consequenceText": "Your parents are safe. Your siblings never know what it cost you."
+    },
+    "choiceRight": {
+      "label": "Tell your siblings, split it three ways",
+      "deltas": { "wealth": -3, "relationships": -4 },
+      "consequenceText": "One sibling pays late. One doesn't pay at all. It gets tense fast."
+    }
+  },
+  {
+    "id": "gun_in_the_house",
+    "version": 1,
+    "prompt": "Your neighbor mentions, almost in passing, that they keep a loaded gun in a drawer your kids play near during playdates.",
+    "category": "moral",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Say something to them directly",
+      "deltas": { "morality": 5, "relationships": -5 },
+      "consequenceText": "They're defensive about it. The playdates get a little less frequent."
+    },
+    "choiceRight": {
+      "label": "Quietly stop the playdates instead",
+      "deltas": { "sanity": 3, "relationships": -3 },
+      "consequenceText": "You never explain why. Your kid asks a few times, then stops."
+    }
+  },
+  {
+    "id": "union_organizing",
+    "version": 1,
+    "prompt": "Coworkers are quietly organizing a union. Management has made it clear who they'll remember if it succeeds — or fails.",
+    "category": "power",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Sign the card",
+      "deltas": { "morality": 5, "wealth": -3 },
+      "consequenceText": "You're one of the names on the list now. There's no quiet way back from that."
+    },
+    "choiceRight": {
+      "label": "Stay out of it",
+      "deltas": { "wealth": 2, "morality": -3 },
+      "consequenceText": "You watch from the sidelines. A few coworkers notice you didn't sign."
+    }
+  },
+  {
+    "id": "scholarship_or_stay",
+    "version": 1,
+    "prompt": "Your child got into their dream school on scholarship — three thousand miles away, four years earlier than you expected to let go.",
+    "category": "relational",
+    "weight": 10,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Encourage them to go",
+      "deltas": { "relationships": -4, "sanity": 4 },
+      "consequenceText": "You help them pack. The house is very quiet after."
+    },
+    "choiceRight": {
+      "label": "Push them toward the local option",
+      "deltas": { "relationships": -3, "sanity": -4 },
+      "consequenceText": "They stay, and don't quite let go of the resentment."
+    }
+  },
+  {
+    "id": "viral_moment",
+    "version": 1,
+    "prompt": "A video of you having a bad day at the grocery store just went viral for the wrong reasons.",
+    "category": "relational",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Post an apology video",
+      "deltas": { "sanity": -5, "relationships": 3 },
+      "consequenceText": "It helps, a little. The comments still find you for weeks."
+    },
+    "choiceRight": {
+      "label": "Say nothing, wait it out",
+      "deltas": { "sanity": -3, "relationships": -3 },
+      "consequenceText": "It fades eventually. Not before it costs you something."
+    }
+  },
+  {
+    "id": "burnout_resignation",
+    "version": 1,
+    "prompt": "You've hit a wall at work. Quitting with nothing lined up would be reckless. Staying might be worse.",
+    "category": "power",
+    "weight": 9,
+    "choiceLeft": {
+      "label": "Quit, with no plan",
+      "deltas": { "sanity": 9, "wealth": -8 },
+      "consequenceText": "It's terrifying and immediately clarifying, in that order."
+    },
+    "choiceRight": {
+      "label": "Grit your teeth and stay",
+      "deltas": { "wealth": 4, "sanity": -7 },
+      "consequenceText": "The paycheck keeps coming. So does the wall."
+    }
+  },
+  {
+    "id": "secret_second_job",
+    "version": 1,
+    "prompt": "You've taken a second job without telling your spouse, to quietly cover a debt they don't know about.",
+    "category": "financial",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Come clean about the debt",
+      "deltas": { "relationships": -6, "sanity": 6 },
+      "consequenceText": "It's a hard conversation. It's also the last time you have to hide it."
+    },
+    "choiceRight": {
+      "label": "Keep working the second job quietly",
+      "deltas": { "wealth": 5, "sanity": -6 },
+      "consequenceText": "The debt shrinks. So does the time you spend at home."
+    }
+  },
+  {
+    "id": "mandatory_minimum_verdict",
+    "version": 1,
+    "prompt": "You're on a jury for a nonviolent drug case carrying a mandatory sentence you think is unjust, even though the evidence is clear.",
+    "category": "moral",
+    "weight": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Vote guilty per the evidence",
+      "deltas": { "morality": -3, "sanity": -5 },
+      "consequenceText": "The verdict is legally correct. It doesn't sit right with you."
+    },
+    "choiceRight": {
+      "label": "Vote not guilty, on principle",
+      "deltas": { "morality": 5, "sanity": -3 },
+      "consequenceText": "The other jurors are baffled. You don't explain yourself."
+    }
+  },
+  {
+    "id": "identity_theft_discovery",
+    "version": 1,
+    "prompt": "Someone's opened three credit cards in your name. Fixing it will eat months of phone calls and paperwork.",
+    "category": "financial",
+    "weight": 9,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Handle it yourself, methodically",
+      "deltas": { "sanity": -6, "wealth": 2 },
+      "consequenceText": "It takes four months. You get every dollar back."
+    },
+    "choiceRight": {
+      "label": "Pay for a service to handle it",
+      "deltas": { "wealth": -6, "sanity": 4 },
+      "consequenceText": "It costs you, but it's mostly off your plate within weeks."
+    }
+  },
+  {
+    "id": "class_action_settlement",
+    "version": 1,
+    "prompt": "A class action settlement check arrives for a company you're fairly sure is still doing the thing they got sued for.",
+    "category": "moral",
+    "weight": 9,
+    "choiceLeft": {
+      "label": "Cash it",
+      "deltas": { "wealth": 3, "morality": -2 },
+      "consequenceText": "It's legally yours. You cash it without much thought."
+    },
+    "choiceRight": {
+      "label": "Donate it to a related advocacy group",
+      "deltas": { "morality": 4, "wealth": -1 },
+      "consequenceText": "It's a small gesture. It's also the only one available to you."
+    }
+  },
+  {
+    "id": "estranged_father_deathbed",
+    "version": 1,
+    "prompt": "Your father, who left when you were seven, is dying and has asked to see you.",
+    "category": "relational",
+    "weight": 6,
+    "minTurn": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Go see him",
+      "deltas": { "relationships": 4, "sanity": -6 },
+      "consequenceText": "You don't forgive him in that room. You go anyway."
+    },
+    "choiceRight": {
+      "label": "Don't go",
+      "deltas": { "sanity": 3, "relationships": -3 },
+      "consequenceText": "You don't regret it the way people warned you that you would. Mostly."
+    }
+  },
+  {
+    "id": "mentee_takes_credit",
+    "version": 1,
+    "prompt": "The junior colleague you mentored for years just took credit for your idea in front of the whole department.",
+    "category": "power",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Correct the record publicly",
+      "deltas": { "morality": 4, "relationships": -5 },
+      "consequenceText": "The room goes quiet. Everyone knows whose idea it actually was now."
+    },
+    "choiceRight": {
+      "label": "Let it go",
+      "deltas": { "sanity": -5, "morality": -2 },
+      "consequenceText": "It happened. You decide not to make it a thing. It stays a thing anyway."
+    }
+  },
+  {
+    "id": "franchise_opportunity",
+    "version": 1,
+    "prompt": "A franchise opportunity could double your income, if you're willing to take on debt most people wouldn't.",
+    "category": "financial",
+    "weight": 9,
+    "choiceLeft": {
+      "label": "Take the debt, open the franchise",
+      "deltas": { "wealth": -6, "sanity": -4 },
+      "setsFlags": ["opened_franchise"],
+      "consequenceText": "You sign the papers. The next two years are going to be tight."
+    },
+    "choiceRight": {
+      "label": "Pass on it",
+      "deltas": { "wealth": 1, "sanity": 3 },
+      "consequenceText": "You watch someone else open one two blocks over, a year later."
+    }
+  },
+  {
+    "id": "neighbor_property_line",
+    "version": 1,
+    "prompt": "A survey reveals your fence sits two feet onto your neighbor's property. They haven't noticed in twelve years.",
+    "category": "moral",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Tell them and fix it",
+      "deltas": { "morality": 5, "wealth": -3 },
+      "consequenceText": "They're surprised you brought it up at all. The fence gets moved."
+    },
+    "choiceRight": {
+      "label": "Say nothing",
+      "deltas": { "morality": -4, "wealth": 1 },
+      "consequenceText": "The fence stays exactly where it is. You avoid that side of the yard a little."
+    }
+  },
+  {
+    "id": "workplace_harassment_witness",
+    "version": 1,
+    "prompt": "You witness a coworker being harassed by a client. Reporting it could cost the company the account, and you your standing with your boss.",
+    "category": "moral",
+    "weight": 9,
+    "choiceLeft": {
+      "label": "Report it",
+      "deltas": { "morality": 8, "wealth": -4 },
+      "consequenceText": "The account is at risk. Your coworker thanks you privately, once."
+    },
+    "choiceRight": {
+      "label": "Stay quiet, it's not your call",
+      "deltas": { "morality": -7, "sanity": -3 },
+      "consequenceText": "The account stays. You avoid your coworker's eyes for a while."
+    }
+  },
+  {
+    "id": "inheritance_stepfamily",
+    "version": 1,
+    "prompt": "Your stepmother's will leaves everything to her biological children. You're the one who took care of her for the last two years.",
+    "category": "relational",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Contest the will",
+      "deltas": { "wealth": 5, "relationships": -8 },
+      "consequenceText": "The lawyers drag it out for a year. You get something. The family doesn't survive it intact."
+    },
+    "choiceRight": {
+      "label": "Let it stand",
+      "deltas": { "wealth": -3, "morality": 4 },
+      "consequenceText": "You walk away with nothing but the years you gave her. Some days that feels like enough."
+    }
+  },
+  {
+    "id": "public_apology_demand",
+    "version": 1,
+    "prompt": "Something you posted years ago has resurfaced. People are demanding a public apology for something you don't actually think was wrong.",
+    "category": "moral",
+    "weight": 8,
+    "choiceLeft": {
+      "label": "Apologize anyway, to make it stop",
+      "deltas": { "sanity": -4, "relationships": 3 },
+      "consequenceText": "It works, mostly. You don't fully mean it, and you know that."
+    },
+    "choiceRight": {
+      "label": "Refuse, stand by what you said",
+      "deltas": { "morality": 3, "relationships": -4 },
+      "consequenceText": "It doesn't blow over as fast. You don't regret it, exactly."
+    }
+  },
+  {
+    "id": "child_learning_disability",
+    "version": 1,
+    "prompt": "Your child's diagnosis means a specialized school that costs more than you make in a year.",
+    "category": "financial",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Find a way to pay for it",
+      "deltas": { "wealth": -10, "relationships": 5 },
+      "consequenceText": "You take on debt you'll be paying off for a decade. Your kid thrives there."
+    },
+    "choiceRight": {
+      "label": "Fight for accommodations at public school instead",
+      "deltas": { "wealth": -2, "sanity": -5 },
+      "consequenceText": "It's an uphill fight with the district, every single semester."
+    }
+  },
+  {
+    "id": "company_environmental_coverup",
+    "version": 1,
+    "prompt": "You discover your company has been underreporting emissions for years. It hasn't visibly hurt anyone yet.",
+    "category": "moral",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Report it to regulators",
+      "deltas": { "morality": 9, "wealth": -6 },
+      "consequenceText": "The fine is enormous. Your name gets out eventually, one way or another."
+    },
+    "choiceRight": {
+      "label": "Say nothing",
+      "deltas": { "morality": -8, "sanity": -4 },
+      "consequenceText": "Nothing changes, outwardly. You know what you know now."
+    }
+  },
+  {
+    "id": "sibling_addiction_enabling",
+    "version": 1,
+    "prompt": "Your brother asks for money again. You know exactly what it's for this time.",
+    "category": "relational",
+    "weight": 9,
+    "choiceLeft": {
+      "label": "Give him the money",
+      "deltas": { "wealth": -5, "relationships": 3 },
+      "consequenceText": "He's grateful, briefly. You know you'll be here again soon."
+    },
+    "choiceRight": {
+      "label": "Say no, for real this time",
+      "deltas": { "relationships": -6, "sanity": 4 },
+      "consequenceText": "He calls you selfish. It's the hardest boundary you've held with him."
+    }
+  },
+  {
+    "id": "retirement_delay",
+    "version": 1,
+    "prompt": "You could retire now on less, or work three more years for real security.",
+    "category": "financial",
+    "weight": 9,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Retire now",
+      "deltas": { "wealth": -6, "sanity": 8 },
+      "consequenceText": "The first Monday morning with nowhere to be feels like a small miracle."
+    },
+    "choiceRight": {
+      "label": "Work three more years",
+      "deltas": { "wealth": 8, "sanity": -6 },
+      "consequenceText": "The security is real. So is the time you don't get back."
+    }
+  },
+  {
+    "id": "surprise_pregnancy",
+    "version": 1,
+    "prompt": "An unplanned pregnancy, at the worst possible financial moment, changes everything you'd planned.",
+    "category": "relational",
+    "weight": 6,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Rearrange your whole life around it",
+      "deltas": { "wealth": -8, "relationships": 8 },
+      "consequenceText": "Nothing goes the way you planned. Most of it turns out fine anyway."
+    },
+    "choiceRight": {
+      "label": "Stick to the plan you had",
+      "deltas": { "relationships": -6, "sanity": -4 },
+      "consequenceText": "The decision costs you something you don't talk about much."
+    }
+  },
+  {
+    "id": "expense_report_fraud",
+    "version": 1,
+    "prompt": "A colleague asks you to sign off on an expense report you know is padded.",
+    "category": "moral",
+    "weight": 10,
+    "choiceLeft": {
+      "label": "Refuse to sign it",
+      "deltas": { "morality": 6, "relationships": -4 },
+      "consequenceText": "They're annoyed. They find someone else to sign it instead."
+    },
+    "choiceRight": {
+      "label": "Sign it, this once",
+      "deltas": { "morality": -5, "relationships": 3 },
+      "consequenceText": "It goes through fine. You know it won't be the only time they ask."
+    }
+  },
+  {
+    "id": "childhood_dream_abandoned",
+    "version": 1,
+    "prompt": "The steady job offer comes through the same week as your one real shot at the creative career you gave up on years ago.",
+    "category": "power",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Take the steady job",
+      "deltas": { "wealth": 6, "sanity": -5 },
+      "consequenceText": "It's the responsible choice. You wonder about the other one more than you expected."
+    },
+    "choiceRight": {
+      "label": "Chase the creative shot",
+      "deltas": { "wealth": -6, "sanity": 7 },
+      "consequenceText": "It might not work out. For the first time in years, you don't care."
+    }
+  },
+  {
+    "id": "neighbor_wellness_check",
+    "version": 1,
+    "prompt": "You haven't seen your elderly neighbor in days. Checking in means possibly finding something you can't unsee.",
+    "category": "relational",
+    "weight": 8,
+    "oneShot": true,
+    "choiceLeft": {
+      "label": "Go check on them yourself",
+      "deltas": { "morality": 5, "sanity": -5 },
+      "consequenceText": "You knock. What happens next stays with you either way."
+    },
+    "choiceRight": {
+      "label": "Call the authorities to check instead",
+      "deltas": { "sanity": 2, "morality": -2 },
+      "consequenceText": "It's handled by someone else. You still wonder if you should have gone yourself."
+    }
   }
 ]

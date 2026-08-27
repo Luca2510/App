@@ -107,5 +107,23 @@
     "description": "You won everything you fought for. Nobody in your house would say it feels like winning.",
     "rarity": "rare",
     "requiredFlags": ["won_full_custody"]
+  },
+  {
+    "id": "end_morality_floor_accomplice",
+    "triggerStat": "morality",
+    "triggerDirection": "floor",
+    "title": "The Company You Kept",
+    "description": "You backed him publicly, right up until it stopped being a question of loyalty and started being a question of what you knew.",
+    "rarity": "rare",
+    "requiredFlags": ["shielded_friend_fraud"]
+  },
+  {
+    "id": "end_wealth_floor_addiction",
+    "triggerStat": "wealth",
+    "triggerDirection": "floor",
+    "title": "The House Always Wins",
+    "description": "You were only ever trying to win back what you'd already lost. There was always a version of that story where it stops in time. This wasn't it.",
+    "rarity": "rare",
+    "requiredFlags": ["gambling_spiral_deep"]
   }
 ]
