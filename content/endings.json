@@ -1,0 +1,129 @@
+[
+  {
+    "id": "end_morality_floor",
+    "triggerStat": "morality",
+    "triggerDirection": "floor",
+    "title": "Nothing Left to Betray",
+    "description": "You stopped asking what it would cost long ago. There's no one left who trusts you enough to be disappointed.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_morality_ceiling",
+    "triggerStat": "morality",
+    "triggerDirection": "ceiling",
+    "title": "The Weight of Being Right",
+    "description": "You never once compromised. It cost you every relationship that needed you to bend, even a little.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_wealth_floor",
+    "triggerStat": "wealth",
+    "triggerDirection": "floor",
+    "title": "The Last Envelope",
+    "description": "There's nothing left to sell and no one left to borrow from. You did this to yourself, one reasonable choice at a time.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_wealth_ceiling",
+    "triggerStat": "wealth",
+    "triggerDirection": "ceiling",
+    "title": "A Very Comfortable Cage",
+    "description": "You have more money than you'll ever need, and no memory of the last time someone wanted something from you besides it.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_relationships_floor",
+    "triggerStat": "relationships",
+    "triggerDirection": "floor",
+    "title": "No One to Call",
+    "description": "The people who might have shown up have stopped waiting for you to need them.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_relationships_ceiling",
+    "triggerStat": "relationships",
+    "triggerDirection": "ceiling",
+    "title": "Everyone's Favor to Cash",
+    "description": "You said yes to all of them, every time, for years. You can't remember the last decision that was only yours.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_sanity_floor",
+    "triggerStat": "sanity",
+    "triggerDirection": "floor",
+    "title": "Static",
+    "description": "Somewhere back along the line, the decisions stopped feeling like yours to make.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_sanity_ceiling",
+    "triggerStat": "sanity",
+    "triggerDirection": "ceiling",
+    "title": "Nothing Touches You Now",
+    "description": "You built enough control around yourself that nothing gets in anymore. Nothing gets out, either.",
+    "rarity": "common"
+  },
+  {
+    "id": "end_relationships_floor_rival",
+    "triggerStat": "relationships",
+    "triggerDirection": "floor",
+    "title": "The Debt Collector",
+    "description": "The deal you made to get ahead finally came due, and it took the last person still willing to stand near you.",
+    "rarity": "rare",
+    "requiredFlags": ["rival_debt_called_in"]
+  },
+  {
+    "id": "end_wealth_ceiling_empire",
+    "triggerStat": "wealth",
+    "triggerDirection": "ceiling",
+    "title": "Sole Proprietor",
+    "description": "You own all of it now — every share, every decision, every empty office after everyone else has gone home.",
+    "rarity": "rare",
+    "requiredFlags": ["built_empire_alone"]
+  },
+  {
+    "id": "end_sanity_floor_martyr",
+    "triggerStat": "sanity",
+    "triggerDirection": "floor",
+    "title": "What Was Left of You",
+    "description": "You gave everything to keep her safe. You're not sure there's a version of you left that exists outside of that.",
+    "rarity": "rare",
+    "requiredFlags": ["gave_up_everything_for_parent"]
+  },
+  {
+    "id": "end_relationships_floor_abandoned",
+    "triggerStat": "relationships",
+    "triggerDirection": "floor",
+    "title": "Visiting Hours",
+    "description": "You made the practical choice. The people who loved you both never quite forgave you for it, including yourself.",
+    "rarity": "rare",
+    "requiredFlags": ["placed_parent_alone"]
+  },
+  {
+    "id": "end_relationships_ceiling_custody",
+    "triggerStat": "relationships",
+    "triggerDirection": "ceiling",
+    "title": "Every Day, Whether They Want To or Not",
+    "description": "You won everything you fought for. Nobody in your house would say it feels like winning.",
+    "rarity": "rare",
+    "requiredFlags": ["won_full_custody"]
+  },
+  {
+    "id": "end_morality_floor_accomplice",
+    "triggerStat": "morality",
+    "triggerDirection": "floor",
+    "title": "The Company You Kept",
+    "description": "You backed him publicly, right up until it stopped being a question of loyalty and started being a question of what you knew.",
+    "rarity": "rare",
+    "requiredFlags": ["shielded_friend_fraud"]
+  },
+  {
+    "id": "end_wealth_floor_addiction",
+    "triggerStat": "wealth",
+    "triggerDirection": "floor",
+    "title": "The House Always Wins",
+    "description": "You were only ever trying to win back what you'd already lost. There was always a version of that story where it stops in time. This wasn't it.",
+    "rarity": "rare",
+    "requiredFlags": ["gambling_spiral_deep"]
+  }
+]
