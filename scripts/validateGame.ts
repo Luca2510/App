@@ -25,6 +25,20 @@ const CHAIN_FLAGS = [
   "placed_parent_alone",
   "fighting_dirty_custody",
   "won_full_custody",
+  "invested_in_startup",
+  "cashed_out_startup",
+  "stayed_in_startup",
+  "cooperated_fraud_probe",
+  "shielded_friend_fraud",
+  "gambling_temptation",
+  "sought_gambling_help",
+  "gambling_spiral_deep",
+  "blew_whistle",
+  "exposed_retaliation",
+  "reported_boss_fraud",
+  "covered_boss_fraud",
+  "confessed_late",
+  "betrayed_boss",
 ] as const;
 
 function makeRng(seed: number) {
